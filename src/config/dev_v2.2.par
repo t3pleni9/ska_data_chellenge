@@ -61,7 +61,7 @@ input.invert               =  false
 flag.region                =  
 flag.auto                  =  false
 flag.threshold             =  5.0
-flag.radiusSpatial         =  0
+# flag.radiusSpatial         =  0
 flag.log                   =  false
 
 
@@ -122,7 +122,7 @@ reliability.plot           =  true
 # Mask dilation
 
 dilation.enable            =  false
-dilation.iterations        =  10
+# dilation.iterations        =  10
 dilation.threshold         =  0.001
 
 
@@ -137,11 +137,11 @@ parameter.offset           =  false
 
 # Output
 
-output.directory           =  /home/justin/Documents/Projects/SKA/ska-data-challenge/src/config
+output.directory           =  /home/justin/Documents/Projects/SKA/ska-data-challenge/output
 output.filename            =  sky_fits_sources
 output.writeCatASCII       =  true
 output.writeCatXML         =  false 
-output.writeCatSQL         =  false
+output.writeCatSQL         =  true
 output.writeNoise          =  false
 output.writeFiltered       =  false
 output.writeMask           =  false
