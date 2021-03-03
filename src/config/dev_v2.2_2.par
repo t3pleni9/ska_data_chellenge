@@ -48,7 +48,7 @@ pipeline.threads           =  0
 # Input
 
 input.data                 =  ../../../data/development/sky_dev.fits
-input.region               =  0,643,0,643,4296,6668
+input.region               =  0,643,0,643,0,2373
 input.gain                 =  
 input.noise                =  
 input.weights              =  
