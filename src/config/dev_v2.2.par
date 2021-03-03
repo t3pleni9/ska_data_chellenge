@@ -137,9 +137,9 @@ parameter.offset           =  false
 
 # Output
 
-output.directory           =  /home/justin/Documents/Projects/SKA/ska-data-challenge/output
-output.filename            =  sky_fits_sources
-output.writeCatASCII       =  true
+output.directory           =  /home/justin/Documents/Projects/SKA/ska-data-challenge/src/output
+output.filename            =  sky_fits_sources_3
+output.writeCatASCII       =  false
 output.writeCatXML         =  false 
 output.writeCatSQL         =  true
 output.writeNoise          =  false
@@ -148,6 +148,6 @@ output.writeMask           =  false
 output.writeMask2d         =  false
 output.writeRawMask        =  false
 output.writeMoments        =  false
-output.writeCubelets       =  false
+output.writeCubelets       =  
 output.marginCubelets      =  0
 output.overwrite           =  true

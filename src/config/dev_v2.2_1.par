@@ -137,8 +137,8 @@ parameter.offset           =  false
 
 # Output
 
-output.directory           =  /home/justin/Documents/Projects/SKA/ska-data-challenge/output
-output.filename            =  sky_fits_sources
+output.directory           =  /home/justin/Documents/Projects/SKA/ska-data-challenge/src/output
+output.filename            =  sky_fits_sources_1
 output.writeCatASCII       =  true
 output.writeCatXML         =  false 
 output.writeCatSQL         =  true
