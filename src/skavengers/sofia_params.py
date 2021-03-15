@@ -1,4 +1,6 @@
 class SofiaParams:
-    def __inti__(self, par_file, output_db_file):
-        self.par_file = par_file
-        self.output_db_file = output_db_file
+    def __inti__(self, par_filename, par_file_directory, output_filename, output_directory):
+        self.par_filename = par_filename
+        self.par_file_directory = par_file_directory
+        self.output_filename = output_filename
+        self.output_directory = output_directory
