@@ -152,6 +152,6 @@ class PipelineSetup:
                     sys.stderr.write("Error: Failed to write output parameter file: {}\n".format(par_filename));
                     sys.exit(1);
 
-                    sofia_params.append(SofiaParams(par_filename, par_file_directory, output_filename, output_directory))
+                sofia_params.append(SofiaParams(par_filename, par_file_directory, output_filename, output_directory))
 
         return sofia_params
