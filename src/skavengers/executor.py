@@ -10,21 +10,22 @@
 # Keep track of process/job
 from multiprocessing import Pool
 import time
+import subprocess
 
 class SoFiA:
     PROCESS_NAME = 'sofia'
     @classmethod
     def execute(cls, config):
-        time.sleep(2)
-        with open(config, 'r') as conf_file:
-            print(config)
-    
+        command = [cls.PROCESS_NAME, config]
+        return subprocess.run(command, capture_output=True)
+        
 class Executor:
     def __init__(self, max_parallel_process):
         self.max_parallel_process = max_parallel_process
 
     def run(self, configs):
-        print("executing", configs)
+        completed_process = []
         with Pool(processes=self.max_parallel_process) as pool:
-            print(pool.map(SoFiA.execute, configs))
-    
+            completed_process = pool.map(SoFiA.execute, configs)
+
+        return completed_process

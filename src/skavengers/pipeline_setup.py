@@ -109,6 +109,10 @@ class PipelineSetup:
 
         sofia_params = []
         # Create set of parameter files
+        if not os.path.exists(par_file_directory):
+            os.makedirs(par_file_directory)
+        if not os.path.exists(output_directory):
+            os.makedirs(output_directory)            
         for y in range(n_reg_y):
             for x in range(n_reg_x):
                 index = x + (n_reg_x * y) + 1;
@@ -130,6 +134,10 @@ class PipelineSetup:
                 if(i < 0): par.append("input.region  =  {0:d},{1:d},{2:d},{3:d},{4:d},{5:d}\n".format(x1, x2, y1, y2, z_min, z_max));
                 else: par[i] = "input.region  =  {0:d},{1:d},{2:d},{3:d},{4:d},{5:d}\n".format(x1, x2, y1, y2, z_min, z_max);
 
+                i = self.substr_search(par, "input.data")
+                if(i < 0): par.append("input.data  =  {0}\n".format(input_file));
+                else: par[i] = "input.data  =  {0}\n".format(input_file);
+                
                 # Add output directory to par file
                 i = self.substr_search(par, "output.directory")
                 if(i < 0): par.append("output.directory  =  {0}\n".format(output_directory));
