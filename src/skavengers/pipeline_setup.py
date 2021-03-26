@@ -126,18 +126,18 @@ class PipelineSetup:
                 if(y2 > y_max or y == n_reg_y - 1): y2 = y_max;
 
                 # Add input region to par file
-                i = substr_search(par, "input.region")
+                i = self.substr_search(par, "input.region")
                 if(i < 0): par.append("input.region  =  {0:d},{1:d},{2:d},{3:d},{4:d},{5:d}\n".format(x1, x2, y1, y2, z_min, z_max));
                 else: par[i] = "input.region  =  {0:d},{1:d},{2:d},{3:d},{4:d},{5:d}\n".format(x1, x2, y1, y2, z_min, z_max);
 
                 # Add output directory to par file
-                i = substr_search(par, "output.directory")
+                i = self.substr_search(par, "output.directory")
                 if(i < 0): par.append("output.directory  =  {0}\n".format(output_directory));
                 else: par[i] = "output.directory  =  {0}\n".format(output_directory);
 
                 # Add output filename to par file
                 output_filename = '{0}_{1:03d}'.format(output_db_name, index)
-                i = substr_search(par, "output.filename");
+                i = self.substr_search(par, "output.filename");
                 if(i < 0): par.append("output.filename  =  {0}\n".format(output_filename));
                 else: par[i] = "output.filename  =  {0}\n".format(output_filename);
     

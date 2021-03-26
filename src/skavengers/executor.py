@@ -15,15 +15,16 @@ class SoFiA:
     PROCESS_NAME = 'sofia'
     @classmethod
     def execute(config):
+        time.sleep(100)
         with open(cnfig, 'r') as conf_file:
-            time.sleep(10)
-            print(conf_file.readlines())
+            return conf_file.readlines()
     
 class Executor:
     def __init__(self, max_parallel_process):
         self.max_parallel_process = max_parallel_process
 
     def run(self, configs):
+        print("executing", configs)
         with Pool(processes=self.max_parallel_process) as pool:
             print(pool.map(SoFiA.execute, configs))
     

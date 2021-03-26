@@ -17,7 +17,7 @@ class Pipeline:
             sys.exit(1)
 
         self.pipeline_setup = pipeline_setup
-        self.config_path = config_path
+        # self.config_path = config_path
         self.sofia_params = []
 
     def init(self):
