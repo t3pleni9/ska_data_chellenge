@@ -8,5 +8,22 @@
 # generate HPC job request
 # trigger
 # Keep track of process/job
+from multiprocessing import Pool
+import time
+
+class SoFiA:
+    PROCESS_NAME = 'sofia'
+    @classmethod
+    def execute(config):
+        with open(cnfig, 'r') as conf_file:
+            time.sleep(10)
+            print(conf_file.readlines())
+    
 class Executor:
-    pass
+    def __init__(self, max_parallel_process):
+        self.max_parallel_process = max_parallel_process
+
+    def run(self, configs):
+        with Pool(processes=self.max_parallel_process) as pool:
+            print(pool.map(SoFiA.execute, configs))
+    
