@@ -24,7 +24,7 @@ class Pipeline:
         self.sofia_params = self.pipeline_setup.gen_par_files(self.config)
 
     def execute(self, executor):
-        executor.run([sofia_param.par_file for sofia_param in self.sofia_params])
+        executor.run([sofia_param.par_filename for sofia_param in self.sofia_params])
 
 
             

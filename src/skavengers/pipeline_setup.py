@@ -143,15 +143,15 @@ class PipelineSetup:
     
                 # Dump parameters into new file
                 par_filename = "sofia_{0:03d}.par".format(index)
-                sys.stdout.write("  {0}/{1}\n".format(par_file_directory, par_filename));
+                # sys.stdout.write("{0}/{1}\n".format(par_file_directory, par_filename));
                 try:
-                    with open(par_filename, "w") as par_file:
+                    with open(f'{par_file_directory}/{par_filename}', "w") as par_file:
                         for item in par:
                             par_file.write("{0}".format(item));
                 except:
                     sys.stderr.write("Error: Failed to write output parameter file: {}\n".format(par_filename));
                     sys.exit(1);
 
-                sofia_params.append(SofiaParams(par_filename, par_file_directory, output_filename, output_directory))
+                sofia_params.append(SofiaParams(f'{par_file_directory}/{par_filename}', par_file_directory, output_filename, output_directory))
 
         return sofia_params

@@ -14,10 +14,10 @@ import time
 class SoFiA:
     PROCESS_NAME = 'sofia'
     @classmethod
-    def execute(config):
-        time.sleep(100)
-        with open(cnfig, 'r') as conf_file:
-            return conf_file.readlines()
+    def execute(cls, config):
+        time.sleep(2)
+        with open(config, 'r') as conf_file:
+            print(config)
     
 class Executor:
     def __init__(self, max_parallel_process):
