@@ -35,7 +35,7 @@ class Pipeline:
         init_catalogue = catalogues[0]
         rest = catalogues[1:]
 
-        merged_catalogue = init_catalogue.merge_catalogues(rest, 0.1)
+        merged_catalogue = init_catalogue.merge_catalogues(rest, self.config['merge']['separation'])
 
         return merged_catalogue
 
