@@ -9,3 +9,4 @@ if __name__ == '__main__':
     pipeline.init()
 
     pipeline.execute(process_executor)
+    catalogue = pipeline.finish()

@@ -5,6 +5,8 @@
 import sys
 import configparser
 
+from .catalogue import Catalogue
+
 # config class
 
 class Pipeline:
@@ -29,7 +31,11 @@ class Pipeline:
 
             
     def finish(self):
-        #merge catalogue results
-        pass
+        catalogues = [Catalogue(f'{params.output_directory}/{params.output_filename}.{params.output_extension}', params.output_type) for params in self.sofia_params]
+        init_catalogue = catalogues[0]
+        rest = catalogues[1:]
 
+        merged_catalogue = init_catalogue.merge_catalogues(rest, 0.1)
+
+        return merged_catalogue
 
