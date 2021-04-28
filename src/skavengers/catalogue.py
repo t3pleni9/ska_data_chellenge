@@ -27,22 +27,31 @@ class Catalogue:
 
     def merge_catalogues(self, catalogues, separation):
         merged_catalogue = self
+        conflicting_sources = None
 
         for catalogue in catalogues:
-            matched_sources = merged_catalogue.match_sources_within(catalogue, separation)
-            data = merged_catalogue.data
-            
+            matched_sources = all_sources.match_sources_within(catalogue, separation)
+            idx_1 = matched_sources['idx_1']
             idx_2 = matched_sources['idx_2']
 
+            data = merged_catalogue.data
+
+            conflicting_sources = matched_sources.to_pandas() \
+                if conflicting_sources is None \
+                else conflicting_sources.append(matched_sources.to_pandas())
+            
+            unmatched_idx_1 = [x for x in range(len(data)) if x not in idx_1]
             unmatched_idx_2 = [x for x in range(len(catalogue.data)) if x not in idx_2]
+
+            merged_catalogue_data = data.iloc[unmatched_idx_1]
             unmatched_sources = catalogue.data.iloc[unmatched_idx_2]
 
-            merged_catalogue_data = data.append(unmatched_sources)
+            merged_catalogue_data = merged_catalogue_data.append(unmatched_sources)
 
             merged_catalogue = Catalogue(data=merged_catalogue_data)
 
         
-        return merged_catalogue
+        return merged_catalogue, conflicting_sources
 
     
     def match_sources_within(self, catalogue, separation):
@@ -61,3 +70,12 @@ class Catalogue:
             df_2[['sky_coord', 'idx_2']],
             join_funcs={'sky_coord': join_skycoord(separation * u.arcsec)}
         )
+
+
+
+
+def get_catalogues(sep):
+   importlib.reload(catalogue)
+   cat1 = catalogue.Catalogue('sofia_output_001_cat.sql', 'sql')
+   cat2 = [catalogue.Catalogue(f"sofia_output_0{n:02}_cat.sql", 'sql') for n in range(2, 17)]
+   return cat1.merge_catalogues(cat2, sep)    
